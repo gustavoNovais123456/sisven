@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gusta\\OneDrive\\Documentos\\Projetos\\SISVEN\\SISVEN.csproj": {}
+    "D:\\GitHub\\sisven\\SISVEN\\SISVEN.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gusta\\OneDrive\\Documentos\\Projetos\\SISVEN\\SISVEN.csproj": {
+    "D:\\GitHub\\sisven\\SISVEN\\SISVEN.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gusta\\OneDrive\\Documentos\\Projetos\\SISVEN\\SISVEN.csproj",
+        "projectUniqueName": "D:\\GitHub\\sisven\\SISVEN\\SISVEN.csproj",
         "projectName": "SISVEN",
-        "projectPath": "C:\\Users\\gusta\\OneDrive\\Documentos\\Projetos\\SISVEN\\SISVEN.csproj",
+        "projectPath": "D:\\GitHub\\sisven\\SISVEN\\SISVEN.csproj",
         "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gusta\\OneDrive\\Documentos\\Projetos\\SISVEN\\obj\\",
+        "outputPath": "D:\\GitHub\\sisven\\SISVEN\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Programas\\Microsoft Visual Studio\\Shared\\NuGetPackages"

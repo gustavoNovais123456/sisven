@@ -1,4 +1,3 @@
-Terminar tela de cadastro cliente
 Montar tela de pesquisa cliente
 Montar novo banco de dados
 criar crud basico de clientes
