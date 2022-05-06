@@ -29,7 +29,6 @@ namespace SISVEN.view.clientes
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TextBox txtFiltro;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastroCliente));
             this.panelCadastro = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -71,11 +70,13 @@ namespace SISVEN.view.clientes
             this.txtCEP = new System.Windows.Forms.TextBox();
             this.btCEP = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtBusca = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btNovo = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btNovo = new System.Windows.Forms.Button();
-            txtFiltro = new System.Windows.Forms.TextBox();
+            this.btExcluir = new System.Windows.Forms.Button();
             this.panelCadastro.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -86,13 +87,6 @@ namespace SISVEN.view.clientes
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtFiltro
-            // 
-            txtFiltro.Location = new System.Drawing.Point(12, 28);
-            txtFiltro.Name = "txtFiltro";
-            txtFiltro.Size = new System.Drawing.Size(100, 23);
-            txtFiltro.TabIndex = 0;
             // 
             // panelCadastro
             // 
@@ -544,21 +538,58 @@ namespace SISVEN.view.clientes
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(txtFiltro);
+            this.panel3.Controls.Add(this.txtBusca);
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(714, 66);
             this.panel3.TabIndex = 5;
             // 
+            // txtBusca
+            // 
+            this.txtBusca.Location = new System.Drawing.Point(3, 28);
+            this.txtBusca.Name = "txtBusca";
+            this.txtBusca.Size = new System.Drawing.Size(624, 23);
+            this.txtBusca.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(633, 28);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Pesquisar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btExcluir);
             this.panel4.Controls.Add(this.btNovo);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 550);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(714, 62);
             this.panel4.TabIndex = 6;
+            // 
+            // btNovo
+            // 
+            this.btNovo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btNovo.FlatAppearance.BorderSize = 0;
+            this.btNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btNovo.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btNovo.ForeColor = System.Drawing.Color.Black;
+            this.btNovo.Image = ((System.Drawing.Image)(resources.GetObject("btNovo.Image")));
+            this.btNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btNovo.Location = new System.Drawing.Point(12, 10);
+            this.btNovo.Name = "btNovo";
+            this.btNovo.Size = new System.Drawing.Size(88, 40);
+            this.btNovo.TabIndex = 6;
+            this.btNovo.Text = "Novo";
+            this.btNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btNovo.UseVisualStyleBackColor = false;
+            this.btNovo.Click += new System.EventHandler(this.btNovo_Click_1);
             // 
             // panel5
             // 
@@ -584,23 +615,22 @@ namespace SISVEN.view.clientes
             this.dataGridView1.Size = new System.Drawing.Size(714, 484);
             this.dataGridView1.TabIndex = 0;
             // 
-            // btNovo
+            // btExcluir
             // 
-            this.btNovo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btNovo.FlatAppearance.BorderSize = 0;
-            this.btNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btNovo.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btNovo.ForeColor = System.Drawing.Color.Black;
-            this.btNovo.Image = ((System.Drawing.Image)(resources.GetObject("btNovo.Image")));
-            this.btNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btNovo.Location = new System.Drawing.Point(12, 10);
-            this.btNovo.Name = "btNovo";
-            this.btNovo.Size = new System.Drawing.Size(88, 40);
-            this.btNovo.TabIndex = 6;
-            this.btNovo.Text = "Novo";
-            this.btNovo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btNovo.UseVisualStyleBackColor = false;
-            this.btNovo.Click += new System.EventHandler(this.btNovo_Click_1);
+            this.btExcluir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btExcluir.FlatAppearance.BorderSize = 0;
+            this.btExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btExcluir.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btExcluir.ForeColor = System.Drawing.Color.Black;
+            this.btExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btExcluir.Image")));
+            this.btExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btExcluir.Location = new System.Drawing.Point(604, 14);
+            this.btExcluir.Name = "btExcluir";
+            this.btExcluir.Size = new System.Drawing.Size(104, 40);
+            this.btExcluir.TabIndex = 8;
+            this.btExcluir.Text = "Excluir";
+            this.btExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btExcluir.UseVisualStyleBackColor = false;
             // 
             // FormCadastroCliente
             // 
@@ -680,5 +710,8 @@ namespace SISVEN.view.clientes
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btNovo;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtBusca;
+        private System.Windows.Forms.Button btExcluir;
     }
 }

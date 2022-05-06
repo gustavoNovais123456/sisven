@@ -17,6 +17,8 @@ namespace SISVEN.view.clientes
 {
     public partial class FormCadastroCliente : Form
     {
+        ClienteDao dao = new ClienteDao();
+
         public FormCadastroCliente()
         {
             InitializeComponent();
@@ -82,19 +84,9 @@ namespace SISVEN.view.clientes
             return strResult + strString;
         }
 
-        private void btClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void btNovo_Click(object sender, EventArgs e)
-        {
-            panelCadastro.Enabled = true;
         }
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
@@ -207,30 +199,13 @@ namespace SISVEN.view.clientes
 
         }
 
-        private void btFiltrar_Click(object sender, EventArgs e)
-        {
-            ClienteDao dao = new ClienteDao();
-            try
-            {
-                DataTable dt = new DataTable();
-
-                dt = dao.PesquisaCliente();
-                dataGridView1.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro : " + ex.Message);
-            }
-        }
-
         private void btEditar_Click(object sender, EventArgs e)
         {
-            ClienteDao dao = new ClienteDao();
+            
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            ClienteDao dao = new ClienteDao();
             Pessoa pessoa = new Pessoa();
 
             pessoa.Cpf = txtCPF.Text.Trim();
@@ -278,15 +253,27 @@ namespace SISVEN.view.clientes
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btNovo_Click_1(object sender, EventArgs e)
         {
             panelCadastro.Enabled = true;
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string filtro = txtBusca.Text.Trim();
+            try
+            {
+                DataTable dt = new DataTable();
+
+                dt = dao.listaEdicao(filtro);
+                dataGridView1.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro : " + ex.Message);
+            }
+        }
+
     }
 
 }

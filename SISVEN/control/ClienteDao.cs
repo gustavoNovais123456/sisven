@@ -66,7 +66,7 @@ namespace SISVEN.control
                     cmd.CommandText = sql;
                     //cmd.Parameters.AddWithValue("filtro", filtro);
                     //cmd.Parameters.AddWithValue("filtro", "%" + filtro.ToLower() + "%");
-                    da = new SQLiteDataAdapter(cmd.CommandText, Conexao.Conexaobd());
+                    da = new SQLiteDataAdapter(cmd);
                     da.Fill(dt);
                     return dt;
                 }
@@ -78,6 +78,38 @@ namespace SISVEN.control
             }
         }
 
+        public DataTable listaEdicao(string filtro)
+        {
+            string sql = "";
+            if (filtro.Equals(""))
+            {
+                 sql = "select id,nome,cpf from pessoa";
+            }
+            else
+            {
+                 sql = "select id,nome,cpf from pessoa " +
+                "where lower(nome) like @filtro or lower(cpf) like @filtro" + " and ativo order by lower(nome)";
+            }
+            SQLiteDataAdapter da = null;
+            DataTable dt = new DataTable();
+            try
+            {
+                using (var cmd = Conexao.Conexaobd().CreateCommand())
+                {
+                    cmd.CommandText = sql;
+                    cmd.Parameters.AddWithValue("@filtro", "%" + filtro.ToLower() + "%");
+                    cmd.Parameters.AddWithValue("@filtro", "%" + filtro.ToLower() + "%");
+                    da = new SQLiteDataAdapter(cmd);
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
 
         //Metodos extras
         private int recuperarId()
