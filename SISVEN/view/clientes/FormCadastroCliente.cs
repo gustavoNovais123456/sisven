@@ -1,5 +1,5 @@
-﻿using Correios.Net;
-using SISVEN.control;
+﻿using SISVEN.control;
+using SISVEN.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -125,7 +125,7 @@ namespace SISVEN.view.clientes
             {
                 txtCelu.Text = FormatarCell(txtCelu.Text);
             }
-            
+
         }
 
         private void txtFone_KeyUp(object sender, KeyEventArgs e)
@@ -213,9 +213,8 @@ namespace SISVEN.view.clientes
             try
             {
                 DataTable dt = new DataTable();
-                string filtro = txtFiltro.Text;
 
-                dt = dao.PesquisaCliente(filtro);
+                dt = dao.PesquisaCliente();
                 dataGridView1.DataSource = dt;
             }
             catch (Exception ex)
@@ -223,5 +222,72 @@ namespace SISVEN.view.clientes
                 MessageBox.Show("Erro : " + ex.Message);
             }
         }
+
+        private void btEditar_Click(object sender, EventArgs e)
+        {
+            ClienteDao dao = new ClienteDao();
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            ClienteDao dao = new ClienteDao();
+            Pessoa pessoa = new Pessoa();
+
+            pessoa.Cpf = txtCPF.Text.Trim();
+            pessoa.Rg = txtRG.Text.Trim();
+            pessoa.Nome = txtNome.Text.Trim();
+            pessoa.Celular = txtCelu.Text.Trim();
+            pessoa.Telefone = txtFone.Text.Trim();
+            pessoa.Sexo = cbSexo.SelectedItem.ToString();
+            pessoa.Instagram = txtInsta.Text.Trim();
+
+            Endereco end = new Endereco();
+            end.Cep = txtCEP.Text;
+            end.Uf = txtUF.Text;
+            end.Cidade = txtCidade.Text;
+            end.Bairro = txtBairro.Text;
+            end.Logradouro = txtRua.Text;
+            end.Numero = int.Parse(txtNum.Text);
+            end.Complemento = txtComplemento.Text;
+
+            if (dao.inserirPessoa(pessoa, end))
+            {
+                MessageBox.Show("Dados Salvos com Sucesso!", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Erro ao Salvar Dados!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtComplemento_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormCadastroCliente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Deseja mesmo fechar essa janela?", "Confirmação", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btNovo_Click_1(object sender, EventArgs e)
+        {
+            panelCadastro.Enabled = true;
+        }
     }
+
 }
+

@@ -16,6 +16,7 @@ namespace SISVEN.model
         private string logradouro;
         private int numero;
         private string complemento;
+        private Pessoa pessoa;
 
         public int Id { get => id; set => id = value; }
         public string Cep { get => cep; set => cep = value; }
@@ -25,5 +26,6 @@ namespace SISVEN.model
         public string Logradouro { get => logradouro; set => logradouro = value; }
         public int Numero { get => numero; set => numero = value; }
         public string Complemento { get => complemento; set => complemento = value; }
+        internal Pessoa Pessoa { get => pessoa; set => pessoa = value; }
     }
 }

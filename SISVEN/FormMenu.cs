@@ -37,5 +37,19 @@ namespace SISVEN
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void FormMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Deseja mesmo fechar essa janela?", "Confirmação", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
     }
 }

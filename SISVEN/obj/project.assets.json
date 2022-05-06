@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     "net5.0-windows7.0": {
-      "Correios.CEP.Net/1.1.6": {
-        "type": "package",
-        "compile": {
-          "lib/Correios.Net.dll": {}
-        },
-        "runtime": {
-          "lib/Correios.Net.dll": {}
-        }
-      },
       "EntityFramework/6.4.4": {
         "type": "package",
         "dependencies": {
@@ -344,19 +335,6 @@
     }
   },
   "libraries": {
-    "Correios.CEP.Net/1.1.6": {
-      "sha512": "5xiGLVdvGxlG5SnOYHusZnAyveuxVQaqTkW002iV7sFeWZlhzxaUUE/ghjhnr+dh6ic+HauYnY9zGcg74fzH2Q==",
-      "type": "package",
-      "path": "correios.cep.net/1.1.6",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "correios.cep.net.1.1.6.nupkg.sha512",
-        "correios.cep.net.nuspec",
-        "lib/Correios.Net.dll",
-        "lib/Correios.Net.pdb"
-      ]
-    },
     "EntityFramework/6.4.4": {
       "sha512": "yj1+/4tci7Panu3jKDHYizxwVm0Jvm7b7m057b5h4u8NUHGCR8WIWirBTw+8EptRffwftIWPBeIRGNKD1ewEMQ==",
       "type": "package",
@@ -1175,7 +1153,6 @@
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
-      "Correios.CEP.Net >= 1.1.6",
       "System.Data.SQLite >= 1.0.115.5"
     ]
   },
@@ -1223,10 +1200,6 @@
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
         "dependencies": {
-          "Correios.CEP.Net": {
-            "target": "Package",
-            "version": "[1.1.6, )"
-          },
           "System.Data.SQLite": {
             "target": "Package",
             "version": "[1.0.115.5, )"
@@ -1253,17 +1226,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'Correios.CEP.Net 1.1.6' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto 'net5.0-windows7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
-      "libraryId": "Correios.CEP.Net",
-      "targetGraphs": [
-        "net5.0-windows7.0"
-      ]
-    }
-  ]
+  }
 }

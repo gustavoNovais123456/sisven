@@ -53,4 +53,3 @@ D:\GitHub\sisven\SISVEN\bin\Debug\net5.0-windows\runtimes\win-x86\native\SQLite.
 D:\GitHub\sisven\SISVEN\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\GitHub\sisven\SISVEN\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\GitHub\sisven\SISVEN\obj\Debug\net5.0-windows\SISVEN.csproj.CopyComplete
-D:\GitHub\sisven\SISVEN\bin\Debug\net5.0-windows\Correios.Net.dll

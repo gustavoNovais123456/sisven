@@ -12,19 +12,30 @@ namespace SISVEN.control
 {
     class ClienteDao
     {
-        private bool inserirPessoa(Pessoa pessoa)
+        EnderecoDao endDao = new EnderecoDao();
+        //Cadastro De Cliente
+        public bool inserirPessoa(Pessoa pessoa,Endereco end)
         {
-            String SQL = "insert into pessoa " +
-                "(nome, telefone, endereco, endereco_numero, cidade_id, cliente, fornecedor) values " +
-                "(@nome, @telefone, @endereco, @endereco_numero, @cidade_id, @cliente, @fornecedor)";
+            String SQL = "INSERT INTO pessoa (id,cpf,rg, Nome,Celular,Telefone,instagram,cliente,vendedor,ativo)" +
+                "VALUES (@id,@cpf,@rg,@nome,@celular,@telefone,@instagram,@cliente,@vendedor,@ativo)";
+            int ultimoid = recuperarId();
             try
             {
                 using (var cmd = Conexao.Conexaobd().CreateCommand())
                 {
-                    cmd.CommandText = "INSERT INTO Clientes(Nome,endereco) values (@nome, @endereco)";
-                    cmd.Parameters.AddWithValue("@Nome", pessoa.Nome);
-                    cmd.Parameters.AddWithValue("@Endereco", pessoa.Endereco);
+                    cmd.CommandText = SQL;
+                    cmd.Parameters.AddWithValue("@id", ultimoid);
+                    cmd.Parameters.AddWithValue("@cpf", pessoa.Cpf);
+                    cmd.Parameters.AddWithValue("@rg", pessoa.Rg);
+                    cmd.Parameters.AddWithValue("@nome", pessoa.Nome);
+                    cmd.Parameters.AddWithValue("@celular", pessoa.Celular);
+                    cmd.Parameters.AddWithValue("@telefone", pessoa.Telefone);
+                    cmd.Parameters.AddWithValue("@instagram", pessoa.Instagram);
+                    cmd.Parameters.AddWithValue("@cliente", true);
+                    cmd.Parameters.AddWithValue("@vendedor", false);
+                    cmd.Parameters.AddWithValue("@ativo", true);
                     cmd.ExecuteNonQuery();
+                    endDao.inserirEndereco(end);
                 }
             }
             catch (Exception)
@@ -33,18 +44,18 @@ namespace SISVEN.control
             }
             finally
             {
-                
+                Conexao.Conexaobd().Close();
             }
 
             return true;
         }
-
-        public DataTable PesquisaCliente(String filtro)
+        
+        //Pesquisa Geral de Cliente
+        public DataTable PesquisaCliente()
         {
-                      string sql = "SELECT p.nome,c.cpf,c.rg,p.celular,p.telefone,c.instagram,c.sexo,c.nascimento, " +
-                        "e.cep,e.uf,e.cidade,e.bairro,e.logradouro,e.numero,e.complemento,p.ativo" +
-                        "from pessoa p INNER JOIN cliente c on p.id = c.pessoa INNER join endereco e on p.endereco = e.id" +
-                        "WHERE c.cpf = @filtro or lower(p.nome) like @filtro";
+            string sql = "SELECT pessoa.nome,pessoa.cpf,pessoa.rg,pessoa.Celular,pessoa.Telefone,pessoa.instagram,pessoa.cliente,pessoa.ativo," +
+                "endereco.cep,endereco.uf,endereco.cidade,endereco.bairro,endereco.logradouro,endereco.numero,endereco.complemento " +
+                "from pessoa join endereco on pessoa.id = endereco.pessoa";
 
             SQLiteDataAdapter da = null;
             DataTable dt = new DataTable();
@@ -53,8 +64,8 @@ namespace SISVEN.control
                 using (var cmd = Conexao.Conexaobd().CreateCommand())
                 {
                     cmd.CommandText = sql;
-                    cmd.Parameters.AddWithValue("filtro", filtro);
-                    cmd.Parameters.AddWithValue("filtro", "%" + filtro.ToLower() + "%");
+                    //cmd.Parameters.AddWithValue("filtro", filtro);
+                    //cmd.Parameters.AddWithValue("filtro", "%" + filtro.ToLower() + "%");
                     da = new SQLiteDataAdapter(cmd.CommandText, Conexao.Conexaobd());
                     da.Fill(dt);
                     return dt;
@@ -65,6 +76,26 @@ namespace SISVEN.control
                 MessageBox.Show(ex.Message);
                 return null;
             }
+        }
+
+
+        //Metodos extras
+        private int recuperarId()
+        {
+            var cmd = Conexao.Conexaobd().CreateCommand();
+            cmd.CommandText = "SELECT count(id) from pessoa";
+
+            // The row ID is a 64-bit value - cast the Command result to an Int64.
+            //
+            Int64 LastRowID64 = (Int64)cmd.ExecuteScalar();
+
+            int LastRowID = (int)LastRowID64;
+            if (LastRowID == 0)
+            {
+                LastRowID += 1;
+                return LastRowID;
+            }
+            return LastRowID;
         }
     }
 }
