@@ -1,0 +1,3 @@
+select p.cpf,p.rg,p.nome,p.fone,p.fone2,p.ativo, c.cep,c.estado,c.cidade,c.bairro,c.endereco,c.numero,c.complemento 
+from pessoas p 
+join enderecos c on p.id = c.pessoa_id;

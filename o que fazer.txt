@@ -1,4 +1,0 @@
-Montar tela de pesquisa cliente
-Montar novo banco de dados
-criar crud basico de clientes
-montar logo do projeto
