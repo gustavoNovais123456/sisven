@@ -112,6 +112,7 @@
             this.dgListaCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgListaCliente.Size = new System.Drawing.Size(1004, 401);
             this.dgListaCliente.TabIndex = 2;
+            this.dgListaCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgListaCliente_CellContentClick);
             // 
             // panelControle
             // 
@@ -637,6 +638,7 @@
             this.txtCPF.TabIndex = 63;
             this.txtCPF.Texts = "";
             this.txtCPF.UnderlinedStyle = false;
+            this.txtCPF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCPF_KeyPress);
             // 
             // txtNome
             // 
@@ -660,6 +662,8 @@
             this.txtNome.TabIndex = 62;
             this.txtNome.Texts = "";
             this.txtNome.UnderlinedStyle = false;
+            this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
+            this.txtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNome_KeyPress);
             // 
             // FormCadastroCliente
             // 

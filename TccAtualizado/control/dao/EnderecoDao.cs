@@ -27,7 +27,6 @@ namespace TccAtualizado.control.dao
                 comando.Parameters.AddWithValue("@rua", endereco.Rua);
                 comando.Parameters.AddWithValue("@numero", endereco.Numero);
                 comando.Parameters.AddWithValue("@complemento", endereco.Complemento);
-                comando.Parameters.AddWithValue("@pessoa", endereco.Pessoa.Id);
                 comando.ExecuteNonQuery();
             }
             catch (Exception)

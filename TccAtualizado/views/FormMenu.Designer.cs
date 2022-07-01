@@ -110,7 +110,7 @@
             this.panelSubCadastro.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubCadastro.Location = new System.Drawing.Point(0, 63);
             this.panelSubCadastro.Name = "panelSubCadastro";
-            this.panelSubCadastro.Size = new System.Drawing.Size(190, 109);
+            this.panelSubCadastro.Size = new System.Drawing.Size(190, 126);
             this.panelSubCadastro.TabIndex = 9;
             // 
             // btCadProduto

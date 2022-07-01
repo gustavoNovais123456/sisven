@@ -70,6 +70,23 @@ namespace TccAtualizado.views.views_cadastros
                 MessageBox.Show("CEP Invelido");
             }
         }
+        private void buscarCep()
+        {
+            var service = new CorreiosApi();
+            try
+            {
+                var dados = service.consultaCEP(txtCep.Texts);
+
+                txtEstado.Texts = dados.uf;
+                txtCidade.Texts = dados.cidade;
+                txtBairro.Texts = dados.bairro;
+                txtRua.Texts = dados.end;
+            }
+            catch
+            {
+                MessageBox.Show("CEP Invelido");
+            }
+        }
         private void carregarClientes()
         {
             string filtro = txtFiltro.Texts;
@@ -87,12 +104,12 @@ namespace TccAtualizado.views.views_cadastros
                 cond = "inativos";
             }
 
-
-            dgListaCliente.DataSource = daoCliente.listaCliente(filtro, cond);
+           // dgListaCliente.DataSource = daoCliente.listaCliente(filtro, cond);
+            dgListaCliente.DataSource = daoCliente.testeP(filtro, cond);
             this.dgListaCliente.Columns["id"].Visible = false;
             this.dgListaCliente.Columns["rg"].Visible = false;
             this.dgListaCliente.Columns["fone2"].Visible = false;
-            this.dgListaCliente.Columns["tipo_pessoa"].Visible = false;
+            //this.dgListaCliente.Columns["tipo_pessoa"].Visible = false;
 
         }
         #endregion
@@ -107,7 +124,16 @@ namespace TccAtualizado.views.views_cadastros
         {
             carregarClientes();
         }
-
+        private bool validarCadastro()
+        {
+            if (txtNome.Texts.Trim().Length == 0)
+            {
+                MessageBox.Show("Informe o nome para o cadastro");
+                txtNome.Focus();
+                return false;
+            }
+            return true;
+        }
         private void manterPessoa()
         {
             Pessoa pessoa = new Pessoa();
@@ -118,12 +144,12 @@ namespace TccAtualizado.views.views_cadastros
             pessoa.Fone = txtCel.Texts.Trim();
             pessoa.Fone2 = txtCel2.Texts.Trim();
             //pessoa.Ativo = tbtAtivo.Checked;
-            
+            pessoa.Endereco = new Endereco();
+            pessoa.Endereco.Cep = txtCep.Texts;
+            pessoa.Endereco.Estado = txtEstado.Texts;
             if (daoCliente.gravarPessoa(pessoa))
             {
-
                 MessageBox.Show("Dados Salvos com Sucesso!", "Confirmação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                manterEnd();
                 limpaCampo();
                 desabilitarPaineis(true);
                 tabControl1.SelectedIndex = 0;
@@ -133,30 +159,13 @@ namespace TccAtualizado.views.views_cadastros
             {
                 MessageBox.Show("Erro ao Salvar Dados!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void manterEnd()
-        {
-            Endereco end = new Endereco();
-            end.Cep = txtCep.Texts;
-            end.Estado = txtEstado.Texts;
-            end.Cidade = txtCidade.Texts;
-            end.Bairro = txtBairro.Texts;
-            end.Rua = txtRua.Texts;
-            end.Numero = txtNum.Texts;
-            end.Complemento = txtComplemento.Texts;
-            end.Pessoa = daoCliente.recuperaUltimoID();
-            if (daoEnd.inserirEndereco(end))
-            {
-            }
-            else
-            {
-                MessageBox.Show("Erro ao Salvar Endereco!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-        }
+        }     
         private void brSalvar_Click(object sender, EventArgs e)
         {
-            manterPessoa();
+            if (validarCadastro())
+            {
+                manterPessoa();
+            }
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
@@ -173,6 +182,26 @@ namespace TccAtualizado.views.views_cadastros
         #endregion
 
         private void btExcluir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsNumber(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void txtNome_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void txtNome_KeyDown(object sender, KeyEventArgs e)
+        {
+          //  e.Handled = !char.IsLetter(e.KeyCode) || c == 8;
+        }
+
+        private void dgListaCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

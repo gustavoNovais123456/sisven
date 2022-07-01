@@ -16,6 +16,7 @@ namespace TccAtualizado.model
         private string _fone2;
         private string _tipo_pessoa;
         private bool _ativo;
+        private Endereco _endereco;
 
         public int Id { get => _id; set => _id = value; }
         public string Cpf { get => _cpf; set => _cpf = value; }
@@ -25,5 +26,6 @@ namespace TccAtualizado.model
         public string Tipo_pessoa { get => _tipo_pessoa; set => _tipo_pessoa = value; }
         public bool Ativo { get => _ativo; set => _ativo = value; }
         public string Fone2 { get => _fone2; set => _fone2 = value; }
+        internal Endereco Endereco { get => _endereco; set => _endereco = value; }
     }
 }

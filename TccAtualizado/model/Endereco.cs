@@ -16,7 +16,6 @@ namespace TccAtualizado.model
         private string _numero;
         private string _cidade;
         private string _estado;
-        private Pessoa _pessoa;
 
         public int Id { get => _id; set => _id = value; }
         public string Cep { get => _cep; set => _cep = value; }
@@ -26,6 +25,5 @@ namespace TccAtualizado.model
         public string Numero { get => _numero; set => _numero = value; }
         public string Cidade { get => _cidade; set => _cidade = value; }
         public string Estado { get => _estado; set => _estado = value; }
-        internal Pessoa Pessoa { get => _pessoa; set => _pessoa = value; }
     }
 }

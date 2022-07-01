@@ -13,7 +13,7 @@ namespace TccAtualizado.control.dao
 
         public int maxProduto()
         {
-            string SQL = "SELECT COUNT(*) FROM produtos";
+            string SQL = "SELECT COUNT(*) FROM produtos_servicos";
             MySqlCommand comando = null;
 
             comando = new MySqlCommand(SQL, Conexao.getConexaoBD());
