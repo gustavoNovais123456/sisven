@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="custom\RJButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="custom\RJCircularPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="custom\RJComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="custom\RJDropdownMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="custom\RJProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="custom\RJRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="custom\RJTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="custom\RJToggleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="view\cadastrar\FormCadastroPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="view\cadastrar\FormCadastroVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="view\cadastrar\FormCadastroViagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="view\consultar\FormConsultaPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="view\consultar\FormConsultaVeiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="view\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="view\FormMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
